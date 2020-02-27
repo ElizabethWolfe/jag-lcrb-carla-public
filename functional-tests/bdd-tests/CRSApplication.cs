@@ -17,11 +17,11 @@ Feature: CRSApplication
     I want to submit a CRS Application
 
 Scenario: Start Application
-    Given I SEE the Dashboard
-    And I CLICK Start Application
-    And I CLICK on Continue to Application
-    And I COMPLETE the Application
-    And I CLICK on 'SUBMIT & PAY'
+    Given I am logged in to the dashboard
+    And I click on the Start Application button
+    And I click on the Continue to Application button
+    And I complete the application
+    And I click on the Submit & Pay button
     And I enter the payment information
     Then I return to the dashboard
 */
@@ -34,7 +34,7 @@ namespace bdd_tests
 
         // Dashboard related common actions
 
-        [Given(@"I SEE the Dashboard")]
+        [Given(@"I am logged in to the dashboard")]
         public void I_view_the_dashboard()
         {
             CarlaLogin();
@@ -45,7 +45,7 @@ namespace bdd_tests
         {
         }
 
-        [And(@"I CLICK Start Application")]
+        [And(@"I click on the Start Application button")]
         public void I_start_application()
         {
             ngDriver.WaitForAngular();
@@ -53,7 +53,7 @@ namespace bdd_tests
             startApp_button.Click();
         }
 
-        [And(@"I CLICK on Continue to Application")]
+        [And(@"I click on the Continue to Application button")]
         public void I_continue_to_application()
         {
             ngDriver.WaitForAngular();
@@ -62,21 +62,10 @@ namespace bdd_tests
             ngDriver.WaitForAngular();
         }
 
-        [And(@"I COMPLETE the Application")]
-        public void I_complete_the_application()
+        //And I enter <establishment> <street_address> <city> <postal> <pid> <store_email> <store_phone> <contact_given> <contact_surname> <contact_title> <contact_phone> <contact_email>
+        [And(@"I enter (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)")]
+        public void I_enter_the_application_info(string estName, string estAddress, string estCity, string estPostal, string estPID, string estEmail, string estPhone, string conGiven, string conSurname, string conRole, string conPhone)
         {
-            string estName = "Point Ellis Greenhouse";
-            string estAddress = "645 Tyee Rd";
-            string estCity = "Victoria";
-            string estPostal = "V9A6X5";
-            string estPID = "012345678";
-            string estEmail = "test@test.com";
-            string estPhone = "2505555555";
-            string conGiven = "Given";
-            string conSurname = "Surname";
-            string conRole = "CEO";
-            string conPhone = "2508888888";
-
             NgWebElement estabName = ngDriver.FindElement(By.Id("establishmentName"));
             estabName.SendKeys(estName);
 
@@ -98,6 +87,22 @@ namespace bdd_tests
             NgWebElement estabPhone = ngDriver.FindElement(By.Id("establishmentPhone"));
             estabPhone.SendKeys(estPhone);
 
+            NgWebElement contactGiven = ngDriver.FindElement(By.Id("contactPersonFirstName"));
+            contactGiven.SendKeys(conGiven);
+
+            NgWebElement contactSurname = ngDriver.FindElement(By.Id("contactPersonLastName"));
+            contactSurname.SendKeys(conSurname);
+
+            NgWebElement contactRole = ngDriver.FindElement(By.CssSelector("input[formControlName=contactPersonRole]"));
+            contactRole.SendKeys(conRole);
+
+            NgWebElement contactPhone = ngDriver.FindElement(By.CssSelector("input[formControlName=contactPersonPhone]"));
+            contactPhone.SendKeys(conPhone);
+        }
+
+        [And(@"I complete the application")]
+        public void I_complete_the_application()
+        {
             var environment = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(environment).Parent.FullName;
             string projectDirectory2 = Directory.GetParent(projectDirectory).Parent.FullName;
@@ -122,18 +127,6 @@ namespace bdd_tests
             NgWebElement uploadFinIntegrity = ngDriver.FindElement(By.XPath("(//input[@type='file'])[15]"));
             uploadFinIntegrity.SendKeys(finIntegrityPath);
 
-            NgWebElement contactGiven = ngDriver.FindElement(By.Id("contactPersonFirstName"));
-            contactGiven.SendKeys(conGiven);
-
-            NgWebElement contactSurname = ngDriver.FindElement(By.Id("contactPersonLastName"));
-            contactSurname.SendKeys(conSurname);
-            
-            NgWebElement contactRole = ngDriver.FindElement(By.CssSelector("input[formControlName=contactPersonRole]"));
-            contactRole.SendKeys(conRole);
-
-            NgWebElement contactPhone = ngDriver.FindElement(By.CssSelector("input[formControlName=contactPersonPhone]"));
-            contactPhone.SendKeys(conPhone);
-
             NgWebElement authorizedSubmit = ngDriver.FindElement(By.Id("authorizedToSubmit"));
             authorizedSubmit.Click();
 
@@ -141,7 +134,7 @@ namespace bdd_tests
             signatureAgree.Click();
         }
 
-        [And(@"I CLICK on 'SUBMIT & PAY'")]
+        [And(@"I click on the Submit & Pay button")]
         public void click_on_submit_and_pay()
         {
             NgWebElement submitpay_button = ngDriver.FindElement(By.XPath("//button[contains(.,'SUBMIT & PAY')]"));
