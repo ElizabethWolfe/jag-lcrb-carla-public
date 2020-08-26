@@ -29,6 +29,9 @@ namespace bdd_tests
 
             if (businessType == " private corporation")
             {
+
+                Assert.True(ngDriver.FindElement(By.XPath("//body[contains(.,'Legal Entity Structure')]")).Displayed);
+                /*
                 // find the upload test files in the bdd-tests\upload_files folder
                 var environment = Environment.CurrentDirectory;
                 string projectDirectory = Directory.GetParent(environment).Parent.FullName;
@@ -54,7 +57,7 @@ namespace bdd_tests
                 NgWebElement uiUploadAdditionalSupportingDocument = ngDriver.FindElement(By.XPath("(//input[@type='file'])[11]"));
                 uiUploadAdditionalSupportingDocument.SendKeys(additionalSupportingDocument);
 
-                /********** Leader #0 **********/
+                /********** Leader #0 **********
 
                 // create the leader data
                 string leaderFirstName = "Leader0";
@@ -97,7 +100,7 @@ namespace bdd_tests
                 NgWebElement uiConfirmButtonLeader = ngDriver.FindElement(By.CssSelector("[changetypesuffix='Leadership'] .fa-save span"));
                 uiConfirmButtonLeader.Click();
 
-                /********** Individual Shareholder #0 **********/
+                /********** Individual Shareholder #0 **********
 
                 // create the shareholder data
                 string shareholderFirstName = "IndividualShareholder0";
@@ -136,7 +139,7 @@ namespace bdd_tests
                 NgWebElement uiConfirmButtonIndyShareholder = ngDriver.FindElement(By.CssSelector("[changetypesuffix='IndividualShareholder'] .fa-save span"));
                 uiConfirmButtonIndyShareholder.Click();
 
-                /********** Business Shareholder #1 **********/
+                /********** Business Shareholder #1 **********
 
                 // create the business shareholder data
                 string businessName = "Business Shareholder 1";
@@ -182,7 +185,7 @@ namespace bdd_tests
                 NgWebElement uiUploadSpecialRightsResBiz = ngDriver.FindElement(By.XPath("(//input[@type='file'])[21]"));
                 uiUploadSpecialRightsResBiz.SendKeys(specialRightsRestrictionsBiz);
 
-                /********** Business Shareholder #1 - Leader #1 **********/
+                /********** Business Shareholder #1 - Leader #1 **********
 
                 // create business shareholder #1 leader data
                 string leaderFirstNameBiz = "Leader1";
@@ -225,7 +228,7 @@ namespace bdd_tests
                 NgWebElement uiConfirmButtonBusLeader = ngDriver.FindElement(By.CssSelector("[changetypesuffix='BusinessShareholder'] [changetypesuffix='Leadership'] .fa-save span"));
                 uiConfirmButtonBusLeader.Click();
 
-                /********** Business Shareholder #1 - Individual Shareholder #1 **********/
+                /********** Business Shareholder #1 - Individual Shareholder #1 **********
 
                 // create the business shareholder #1 > individual shareholder data
                 string shareholderFirstNameBiz = "IndividualShareholder1";
@@ -263,6 +266,7 @@ namespace bdd_tests
                 // click on the Confirm button
                 NgWebElement uiConfirmButtonBusIndyShareholder = ngDriver.FindElement(By.CssSelector("[changetypesuffix='BusinessShareholder'] [changetypesuffix='IndividualShareholder'] .fa-save span"));
                 uiConfirmButtonBusIndyShareholder.Click();
+            */
             }
 
             if (businessType == " sole proprietorship")
