@@ -19,4 +19,6 @@ Scenario: Local Government Approval for Picnic Area Endorsement
     And I approve the picnic application
     And I log in as the manufacturer
     And I review the local government response
-    Then the application status is updated on the dashboard
+    And the status on the dashboard is updated as Application Under Review
+    And the account is deleted
+    Then I see the login page
