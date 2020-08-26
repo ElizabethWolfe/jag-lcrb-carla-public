@@ -278,5 +278,15 @@ namespace bdd_tests
             NgWebElement uiMapCheckbox = ngDriver.FindElement(By.CssSelector("mat-checkbox"));
             uiMapCheckbox.Click();
         }
+
+
+        [And(@"the dashboard status is updated as (.*)")]
+        public void DashboardStatus(string status)
+        {
+            if (status == "Application Under Review")
+            { 
+            
+            }
+        }
     }
 }

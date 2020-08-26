@@ -15,10 +15,10 @@ Scenario: Local Government Approval for Picnic Area Endorsement
     And the application is approved
     And I pay the licensing fee for a Manufacturer application
     And I request a picnic area endorsement
-    And I log in as Saanich local government
-    And I approve the picnic application
+    And I log in as local government for Saanich
+    And I approve the application for a picnic area
     And I log in as the manufacturer
     And I review the local government response
-    And the status on the dashboard is updated as Application Under Review
+    And the dashboard status is updated as Application Under Review
     And the account is deleted
     Then I see the login page
