@@ -312,7 +312,7 @@ namespace bdd_tests
             if ((bizType == " partnership") || (bizType == " sole proprietorship") || (bizType == " society") || (bizType == " public corporation"))
             {
                 NgWebElement uiDeletePersonnel = ngDriver.FindElement(By.CssSelector(".fa-trash-alt span"));
-                uiDeletePartner.Click();
+                uiDeletePersonnel.Click();
             }
         }
 
