@@ -309,28 +309,10 @@ namespace bdd_tests
                 uiDeleteShareholder.Click();
             }
 
-            if (bizType == " partnership")
+            if ((bizType == " partnership") || (bizType == " sole proprietorship") || (bizType == " society") || (bizType == " public corporation"))
             {
                 NgWebElement uiDeletePartner = ngDriver.FindElement(By.CssSelector(".fa-trash-alt span"));
                 uiDeletePartner.Click();
-            }
-
-            if (bizType == " sole proprietorship")
-            {
-                NgWebElement uiDeleteSoleProprietor = ngDriver.FindElement(By.CssSelector(".fa-trash-alt span"));
-                uiDeleteSoleProprietor.Click();
-            }
-
-            if (bizType == " society")
-            {
-                NgWebElement uiDeleteDirector = ngDriver.FindElement(By.CssSelector(".fa-trash-alt span"));
-                uiDeleteDirector.Click();
-            }
-
-            if (bizType == " public corporation")
-            {
-                NgWebElement uiDeleteLeader = ngDriver.FindElement(By.CssSelector(".fa-trash-alt span"));
-                uiDeleteLeader.Click();
             }
         }
 
