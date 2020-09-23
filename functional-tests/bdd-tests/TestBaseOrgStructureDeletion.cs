@@ -322,9 +322,9 @@ namespace bdd_tests
         {
             if (bizType == " private corporation")
             {
-                Assert.True(ngDriver.FindElement(By.XPath("//body[not(contains(.,'Leader0First'))]")).Displayed);
+                Assert.True(ngDriver.FindElement(By.XPath("//body[not(contains(.,'needs to have one or more key personnel'))]")).Displayed);
 
-                Assert.True(ngDriver.FindElement(By.XPath("//body[not(contains(.,'IndyShareholder0First'))]")).Displayed);
+                Assert.True(ngDriver.FindElement(By.XPath("//body[not(contains(.,'needs to have one or more shareholders'))]")).Displayed);
             }
 
             if (bizType == " partnership")

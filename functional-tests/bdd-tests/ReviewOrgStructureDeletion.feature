@@ -24,8 +24,6 @@ Scenario: Deletion from Private Corporation Org Structure
     And I click on the button for Submit Organization Information
     And I click on the Complete Organization Information button
     And I delete the personnel for a private corporation
-    And I click on the button for Submit Organization Information
-    And I click on the Complete Organization Information button
     And the org structure data is successfully deleted for a private corporation
     And the account is deleted
     Then I see the login page
