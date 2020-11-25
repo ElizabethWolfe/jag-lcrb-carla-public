@@ -23,7 +23,15 @@ namespace bdd_tests
         [And(@"I click on the link for (.*)")]
         public void ClickOnLink(string specificLink)
         {
-            
+
+            WebDriverWait wait = new WebDriverWait(ngDriver, TimeSpan.FromSeconds(10));
+
+            System.Threading.Thread.Sleep(3000);
+
+            NgWebElement element = (NgWebElement)wait.Until(ngDriver => ngDriver.FindElement(By.LinkText(specificLink)));
+            element.Click();
+
+            /*
             NgWebElement uiRequestedLink = null;
             for (int i = 0; i < 30; i++)
             {
@@ -45,6 +53,7 @@ namespace bdd_tests
                 }
             }
             uiRequestedLink.Click();
+            */
         }
 
 

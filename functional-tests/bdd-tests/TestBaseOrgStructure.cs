@@ -53,9 +53,18 @@ namespace bdd_tests
                 string leaderEmail = "leader0@privatecorp.com";
 
                 // open leader #0 form  
+                /*
                 var tempWait = ngDriver.Manage().Timeouts().ImplicitWait;
                 ngDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
 
+                ngDriver.WaitForAngular();
+                */
+                WebDriverWait wait = new WebDriverWait(ngDriver, TimeSpan.FromSeconds(10));
+
+                NgWebElement element = (NgWebElement)wait.Until(ngDriver => ngDriver.FindElement(By.CssSelector(".btn.btn-secondary.AddLeadership")));
+                element.Click();
+
+                /*
                 var uiOpenLeaderForm = ngDriver.FindElements(By.CssSelector(".btn.btn-secondary.AddLeadership"));
 
                 if (uiOpenLeaderForm.Count > 0)
@@ -66,8 +75,9 @@ namespace bdd_tests
                 {
                     throw new Exception($"Unable to Leadership button");
                 }
+                */
 
-                ngDriver.Manage().Timeouts().ImplicitWait = tempWait;
+                //ngDriver.Manage().Timeouts().ImplicitWait = tempWait;
 
                 // enter leader #0 first name
                 NgWebElement uiLeaderFirst = ngDriver.FindElement(By.CssSelector("input[formControlName='firstNameNew']"));

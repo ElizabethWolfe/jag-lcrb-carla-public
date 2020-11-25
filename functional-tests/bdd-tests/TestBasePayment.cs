@@ -60,12 +60,21 @@ namespace bdd_tests
             string firstYearLicenceFee = "Pay First Year Fee";
             string returnToDashboard = "Return to Dashboard";
             
-            var tempWait = ngDriver.Manage().Timeouts().ImplicitWait;
-
+            /*
             ngDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
 
+            ngDriver.WaitForAngular();
+            */
+
+            WebDriverWait wait = new WebDriverWait(ngDriver, TimeSpan.FromSeconds(10));
+
+            NgWebElement element = (NgWebElement)wait.Until(ngDriver => ngDriver.FindElement(By.LinkText(firstYearLicenceFee)));
+            element.Click();
+
+            /*
             // click on the pay first year licence fee link
             var uiFirstYearLicenceFees = ngDriver.FindElements(By.LinkText(firstYearLicenceFee));
+
             if (uiFirstYearLicenceFees.Count > 0)
             {
                 uiFirstYearLicenceFees[0].Click();
@@ -74,8 +83,7 @@ namespace bdd_tests
             {
                 throw new Exception($"Unable to find Pay First Year Fee link");
             }
-
-            ngDriver.Manage().Timeouts().ImplicitWait = tempWait;
+            */
 
             // pay the licence fee
             MakePayment();
